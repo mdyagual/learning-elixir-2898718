@@ -23,18 +23,22 @@ defmodule Wizard.AdvancedRecursion do
 
   def display_schedule([day | rest]) do
     IO.puts "Day #{to_string(day.day)}"
-    # display_events(day.events)
+    display_events(day.events)
     display_schedule(rest)
   end
 
 
+  def display_events(events) when is_map(events) do
+    Enum.map(events, &display_events/1)
+  end
 
+  def display_events({time, [id | next_ids] }) do
+    section = Keyword.get(all_events, String.to_atom(id))
+    IO.puts("#{time} - #{section}")
+    display_events({time, next_ids})
+  end
 
-
-
-
-
-
+  def display_events({_,[]}), do: nil
 
   defp schedule() do
     [
