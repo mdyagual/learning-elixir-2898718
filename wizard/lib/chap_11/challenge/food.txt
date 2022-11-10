@@ -1,0 +1,14 @@
+manzana|fruta
+arroz|granos
+lenteja|granos
+pollo|carne
+nabo|verdura
+guineo|fruta
+pescado|carne
+frejol|granos
+cebolla|hortaliza
+aguacate|fruta
+atun|carne
+jamon|embutido
+huevos|lacteo
+brocoli|verdura
