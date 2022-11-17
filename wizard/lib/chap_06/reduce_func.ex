@@ -1,26 +1,27 @@
 defmodule Wizard.Reduce do
   @moduledoc """
   This module contains functions for reducers.
+      #collection, initial accumulator, function that took elems of the collection  and then the acc and well... you decide more ahead what to do. In this case, multiplicate
+    #If initial accumulator is 0, technically this a sum() of list elements
   """
 
   def example1() do
+
     numbers = [2, 3, 4]
     IO.inspect(numbers, label: "Numbers")
-
-    #collection, initial accumulator, function that took elems of the collection  and then the acc and well... you decide more ahead what to do. In this case, multiplicate
-    #If initial accumulator is 0, technically this a sum() of list elements 
-    r = Enum.reduce(numbers, 0, fn(n, acc) -> 
+    r = Enum.reduce(numbers, 0, fn(n, acc) ->
       IO.inspect(acc, label: "Accumulator")
       IO.inspect(n, label: "Element")
       IO.inspect(n + acc, label: "Product")
     end)
     IO.inspect(r, label: "Reduce")
+
   end
 
   def example2() do
     elements=["Carbon","Hydrogen","Iron"]
     IO.inspect(elements, label: "Elements")
-  
+
     #r = Enum.reduce(elements,"",fn(elem,acc) ->
     #    IO.inspect(acc, label: "Accumulator")
     #    IO.inspect(elem, label: "Element")
@@ -31,7 +32,7 @@ defmodule Wizard.Reduce do
         IO.inspect(acc, label: "Accumulator")
         IO.inspect(elem, label: "Element")
         IO.inspect([String.downcase(elem) | acc], label: "Product")
-        end)    
+        end)
     IO.inspect(r2, label: "Result")
   end
 
@@ -64,15 +65,15 @@ defmodule Wizard.Reduce do
     IO.inspect(elements, label: "Elements")
 
     Enum.reduce(elements, [], fn
-        %{group: 9} = elem, acc -> 
+        %{group: 9} = elem, acc ->
             class = classify(elem, "Transition metal")
             [class | acc]
         %{group: 14} = elem,acc ->
             class = classify(elem, "other non-metal")
-            [class | acc]    
+            [class | acc]
         _ = elem, acc ->
             class = classify(elem, "Unknown")
-            [class | acc]    
+            [class | acc]
     end)
 
   end
@@ -80,5 +81,5 @@ defmodule Wizard.Reduce do
   def classify(map, classification) do
     Map.put(map, :classification,classification)
   end
-     
+
 end

@@ -23,6 +23,7 @@ defmodule Wizard.Challenge.Processor do
 
   #Caso 2: Definición para recursion e ir linea por línea en vez de iteración
   defp add_nom_nom(food_file, output_file, info) do
+
     food = Enum.at(info, 0)
     category = Enum.at(info, 1)
 

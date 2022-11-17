@@ -14,7 +14,7 @@ defmodule Wizard.Chap02.String do
   Define a string
   """
   def define() do
-    definition = "Strings in Elixir are UTF-8 encoded binaries, meaning they are a sequence of Unicode characters. Strings are usually encased in double quotes. If a double quote is present in the string itself, it is escaped with a backslash."
+    definition = "Strings in Elixir are encoded binaries, meaning they are a sequence of Unicode characters. Strings are usually encased in double quotes. If a double quote is present in the string itself, it is escaped with a backslash."
 
     {:ok, definition}
   end
