@@ -28,14 +28,14 @@ defmodule Wizard.Ahorcado do
       else
         oport = oport + 1
         dib_j = actualizarDibujo(oport, dib_j)
-        juego(palJ, selPal, oport, dib_j)
+        if is_atom(dib_j), do: dib_j, else: juego(palJ, selPal, oport, dib_j)
       end
     end
   end
 
-  def juego(palAd) do
-    {:guessed, palAd}
-  end
+  def juego(palAd), do: {:guessed, palAd}
+
+  def juego(oport, _) when oport == 6, do: :gameover
 
   def actualizarPalabra(palJ, ingL, selPal) do
       mod = modificaciones(selPal, ingL)
@@ -81,7 +81,13 @@ defmodule Wizard.Ahorcado do
     if oport == 0 do
       dibujo
     else
-      String.replace(dib_j, to_string(oport), Enum.at(partes, oport - 1))
+      if oport == 6 do
+        IO.puts(dibujoComp)
+        juego(oport, dibujoComp)
+      else
+        String.replace(dib_j, to_string(oport), Enum.at(partes, oport - 1))
+      end
+
 
     end
   end
